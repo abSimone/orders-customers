@@ -8,4 +8,6 @@ class CustomersDao:
         MySql.query("SELECT customerName FROM customers")
         results = MySql.getResults()
         MySql.closeConnection()
-        return results 
+        return results
+        # Questo è un test per la 
+        # notifica
