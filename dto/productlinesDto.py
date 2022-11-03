@@ -17,8 +17,8 @@ class productLinesDto:
         return newList
 
     @classmethod
-    def getDescription(cls, productCode):
-        data = ProductsLines.findAllTextDescriptions(productCode)
+    def getDescription(cls, productLine):
+        data = ProductsLines.findSpecificProductLine(productLine)
         newList = []
         for lista in data: 
             newList.append(ProductLine(lista[0], lista[1]))
