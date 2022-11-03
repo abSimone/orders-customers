@@ -16,10 +16,10 @@ class ProductsLines:
 
 
     @classmethod
-    def findAllTextDescriptions(cls, productCode):
+    def findSpecificProductLine(cls, productLine):
         MySql.openConnection()
         MySql.query(
-            f"SELECT textDescription  FROM productlines  WHERE productLine = '{productCode}'")
+            f"SELECT productLine, textDescription  FROM productlines  WHERE productLine = '{productLine}'")
 
         data = MySql.getResults()
         MySql.closeConnection()
