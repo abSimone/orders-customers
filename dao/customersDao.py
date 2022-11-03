@@ -9,5 +9,3 @@ class CustomersDao:
         results = MySql.getResults()
         MySql.closeConnection()
         return results
-        # Questo è un test per la 
-        # notifica
