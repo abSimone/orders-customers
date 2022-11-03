@@ -1,7 +1,7 @@
 {
-  "user": "",
-  "password": "",
-  "database": "",
-  "host": "",
-  "port": ""
+  "user": "root",
+  "password": "fgWAmLNz6GHER",
+  "database": "classicmodels",
+  "host": "127.0.0.1",
+  "port": "3306"
 }
