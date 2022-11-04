@@ -37,19 +37,19 @@ async def showProductLinesDescription(productLine : str):
 async def showAllProducts():
     return Services().findAllProducts()
 
-@app.get("/products/productName/")
+@app.get("/products/productName")
 async def showProductName(productCode : str):
     return Services().findProductName(productCode)    
 
-@app.get("/products/quantityInStock/")
+@app.get("/products/quantityInStock")
 async def showQuantityInStock(productCode : str):
     return Services().findQuantityInStock(productCode)       
 
-@app.get("/products/buyPrice/")
+@app.get("/products/buyPrice")
 async def showBuyPrice(productCode : str):
     return Services().findBuyPrice(productCode)  
 
-@app.get("/product/productLine/")
+@app.get("/product/productLine")
 async def showProductLine(productCode : str):
     return Services().findProductLine(productCode)              
 
