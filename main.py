@@ -7,14 +7,16 @@ app = FastAPI()
 async def showAllOrders():
     return Services().findAllOrdersService()
 
+@app.get("orders/fullDetails")
+async def showFullDetails():
+    return Services().findAllOrderDetailsService()
+
 @app.get("/orders/{query_id_orders}")
 async def read_query_id_orders(query_id_orders : str, orderNumber : int | None = None):
     if query_id_orders == "status":
         if orderNumber:
             return Services().findOrderStatusService(orderNumber)
         return Services().findAllOrderStatusService()
-    elif query_id_orders == "fullDetails":
-        return Services().findAllOrderDetailsService()
     elif query_id_orders == "articlesNumber":
         if orderNumber:
             return Services().findArticlesNumberByOrderNumberService(orderNumber)
