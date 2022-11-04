@@ -30,8 +30,8 @@ async def showAllOrdersArticlesNumber(orderNumber : int | None = None):
 @app.get("/productlines/info")
 async def showOrderInfo(productLine : str | None = None):
     if productLine:
-        return Services().getAllProductLinesService()
-    return Services().getAllDescriptionService(productLine)
+        return Services().getAllDescriptionService(productLine)
+    return Services().getAllProductLinesService()
 
 @app.get("/products/all")
 async def showAllProducts():
