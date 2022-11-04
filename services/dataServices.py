@@ -1,7 +1,7 @@
 from dto.ordersDto import OrderDto
 from dto.orderdetailsDto import OrderDetailsDto
-
 from dto.productlinesDto import productLinesDto
+from dto.productsDto import ProductDto
 
 class Services:
 
@@ -60,30 +60,23 @@ class Services:
     @classmethod 
     def getAllDescriptionService(cls, productLine : str):
         return productLinesDto().getDescription(productLine)
-    
-class Products:
 
     @classmethod
     def findAllProducts(cls):
-        return Products().findAllProducts()
+        return ProductDto().findAllProducts()
 
     @classmethod
     def findProductName(cls, productCode : str):
-        return Products().findProductName(productCode)
+        return ProductDto().findProductName(productCode)
 
     @classmethod
     def findQuantityInStock(cls, productCode : str):
-        return Products().findQuantityInStock(productCode)  
+        return ProductDto().findQuantityInStock(productCode)  
 
     @classmethod
     def findBuyPrice(cls, productCode : str):
-        return Products().findBuyPrice(productCode)    
+        return ProductDto().findBuyPrice(productCode)    
 
     @classmethod
     def findProductLine(cls, productCode : str):
-        return Products().findProductLine(productCode)
-
-
-
-
-        
+        return ProductDto().findProductLine(productCode)
