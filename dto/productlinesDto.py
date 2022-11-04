@@ -24,4 +24,3 @@ class productLinesDto:
             newList.append(ProductLine(lista[0], lista[1]))
         return newList
 
-

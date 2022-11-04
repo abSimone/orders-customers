@@ -28,12 +28,12 @@ class Order:
         return data
 
     @classmethod
-    def getAllInfosByProductCode(cls, orderNumber):
+    def getArticlesStatus(cls, productCode):
         MySql.openConnection()
         MySql.query(f"""
-                     SELECT *\
+                     SELECT o.orderNumber, o.status , od.productCode\
                      FROM orders o, orderdetails od\
-                     WHERE o.orderNumber = {orderNumber} and od.orderNumber = o.orderNumber
+                     WHERE od.orderNumber = o.orderNumber and od.productCode = '{productCode}'
                      """)
         data = MySql.getResults()
         MySql.closeConnection()
