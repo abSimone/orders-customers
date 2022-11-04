@@ -1,6 +1,8 @@
 from dto.ordersDto import OrderDto
 from dto.orderdetailsDto import OrderDetailsDto
 
+from dto.productlinesDto import productLinesDto
+
 class Services:
 
     @classmethod
@@ -50,3 +52,11 @@ class Services:
     @classmethod
     def findTotalEarningsByOrderService(cls, orderNumber : int):
         return OrderDetailsDto().findTotalEarningsByOrder(orderNumber)
+
+    @classmethod
+    def getAllProductLinesService(cls):
+        return productLinesDto().getAllProductLines()
+
+    @classmethod 
+    def getAllDescriptionService(cls, productLine : str):
+        return productLinesDto().getDescription(productLine)
