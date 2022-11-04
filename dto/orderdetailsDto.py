@@ -28,7 +28,7 @@ class OrderDetailsDto:
         return newList
 
     @classmethod
-    def findAllOrdersArticlesNumberByOrderNumber(cls, orderNumber : int):
+    def findArticlesNumberByOrderNumber(cls, orderNumber : int):
         data = OrderDetails.getNumberOfArticlesByOrderNumber(orderNumber)
         newList = []
         for lista in data:

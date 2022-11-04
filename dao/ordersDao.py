@@ -28,6 +28,18 @@ class Order:
         return data
 
     @classmethod
+    def getAllOrderStatus(cls):
+        MySql.openConnection()
+        MySql.query(f"""
+                     SELECT orderNumber, status\
+                     FROM orders
+                     """)
+        data = MySql.getResults()
+        MySql.closeConnection()
+
+        return data
+
+    @classmethod
     def getArticlesStatus(cls, productCode):
         MySql.openConnection()
         MySql.query(f"""

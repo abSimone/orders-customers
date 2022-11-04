@@ -24,6 +24,14 @@ class OrderDto:
         for lista in data:    
             return {"Numero Ordine": lista[0], "status": lista[1]}
 
+    @classmethod
+    def findAllOrderStatus(cls):
+        data = Order.getAllOrderStatus()
+        newList = []
+        for lista in data:    
+            newList.append({"Numero Ordine": lista[0], "status": lista[1]})
+        return newList
+
 
     @classmethod
     def findArticleStatus(cls, productCode : str):

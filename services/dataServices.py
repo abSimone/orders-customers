@@ -14,6 +14,10 @@ class Services:
         return OrderDto().findOrderStatus(orderNumber)
 
     @classmethod
+    def findAllOrderStatusService(cls):
+        return OrderDto().findAllOrderStatus()
+
+    @classmethod
     def findArticleStatusService(cls, productCode : int):
         return OrderDto().findArticleStatus(productCode)
 
@@ -26,8 +30,8 @@ class Services:
         return OrderDetailsDto().findAllOrdersArticlesNumber()
 
     @classmethod
-    def findAllOrdersArticlesNumberByOrderNumberService(cls, orderNumber : int):
-        return OrderDetailsDto().findAllOrdersArticlesNumberByOrderNumber(orderNumber)
+    def findArticlesNumberByOrderNumberService(cls, orderNumber : int):
+        return OrderDetailsDto().findArticlesNumberByOrderNumber(orderNumber)
     
     @classmethod
     def findAllArticlesQuantityOrderedService(cls):
