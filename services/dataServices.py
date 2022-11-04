@@ -12,8 +12,8 @@ class Services:
         return OrderDto().findOrderStatus(orderNumber)
 
     @classmethod
-    def findArticleStatusService(cls, orderNumber : int):
-        return OrderDto().findArticleStatus(orderNumber)
+    def findArticleStatusService(cls, productCode : int):
+        return OrderDto().findArticleStatus(productCode)
 
     @classmethod
     def findAllOrderDetailsService(cls):
