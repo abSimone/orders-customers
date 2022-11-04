@@ -27,20 +27,30 @@ async def showAllOrdersArticlesNumber(orderNumber : int | None = None):
         return Services().findArticlesNumberByOrderNumberService(orderNumber)
     return Services().findAllOrdersArticlesNumberService()
 
-@app.get("articles/orderedNumber")
-async def showOrderedArticles(productCode : str | None = None):
-    if productCode:
-        return Services().findQuantityOrderedByArticleService(productCode)
-    return Services().findAllArticlesQuantityOrderedService()
+@app.get("/productlines/all")
+async def showAllProductLines():
+    return Services().getAllProductLinesService()
 
-@app.get("articles/earnings")
-async def showArticleEarnings(productCode : str | None = None):
-    if productCode:
-        return Services().findTotalEarningsByArticleService(productCode)
-    return Services().findAllArticlesTotalEarningsService()
+@app.get("/productlines/description/{productLine}")
+async def showProductLinesDescription(productLine : str):
+    return Services().getAllDescriptionService(productLine)
 
-@app.get("orders/earnings")
-async def showOrdersEarnings(orderNumber : int | None = None):
-    if orderNumber:
-        return Services().findTotalEarningsByOrderService(orderNumber)
-    return Services().findAllOrdersTotalEarningsService()
+@app.get("/products/all")
+async def showAllProducts():
+    return Services().findAllProducts()
+
+@app.get("/products/productName")
+async def showProductName(productCode : str):
+    return Services().findProductName(productCode)    
+
+@app.get("/products/quantityInStock")
+async def showQuantityInStock(productCode : str):
+    return Services().findQuantityInStock(productCode)       
+
+@app.get("/products/buyPrice")
+async def showBuyPrice(productCode : str):
+    return Services().findBuyPrice(productCode)  
+
+@app.get("/product/productLine")
+async def showProductLine(productCode : str):
+    return Services().findProductLine(productCode)
