@@ -1,26 +1,55 @@
 from dao.productsDao import Product
 
-class Product: 
-    def __init__(self, product):
-        self.product = product
-        
+class ProductDto: 
 
     @classmethod
-    def getAllProducts(cls):
+    def findAllProducts(cls):
         data = Product.getAllProducts()
         newList = []
         for lista in data:
-            newList.append(Product(lista[0], lista[1]))
-        return newList       
-
-   
+            newList.append({"Codice Prodotto" : lista[0],
+                            "Nome Prodotto" : lista[1],
+                            "Linea" : lista[2],
+                            "Scala" : lista[3],
+                            "Produttore" : lista[4],
+                            "Descrizione" : lista[5],
+                            "Quantità Disponibile" : lista[6],
+                            "Prezzo" : lista[7],
+                            "MSRP" : lista[8]})
+        return newList           
 
     @classmethod
-    def getAllProductName(cls):
-        data = Product.getAllProductName()
+    def findProductName(cls, productCode : str):
+        data = Product.getProductName(productCode)
         newList = []
         for lista in data:
-            newList.append(Product(lista[0], lista[1]))
-        return newList       
-    
-    
+            newList.append({"Codice Prodotto" : lista[0], "Nome Prodotto" : lista[1]})
+
+        return newList
+
+    @classmethod
+    def findQuantityInStock(cls, productCode : str):
+        data = Product.getQuantityInStock(productCode)
+        newList = []
+        for lista in data:
+            newList.append({"Codice Prodotto" : lista[0], "Quantità Disponibile" : lista[1]})
+
+        return newList
+
+    @classmethod
+    def findBuyPrice(cls, productCode : str):
+        data = Product.getBuyPrice(productCode)
+        newList = []
+        for lista in data:
+            newList.append({"Codice Prodotto" : lista[0], "Prezzo" : lista[1]})
+
+        return newList
+
+    @classmethod
+    def findProductLine(cls, productCode : str):
+        data = Product.getProductLine(productCode)
+        newList = []
+        for lista in data:
+            newList.append({"Codice Prodotto" : lista[0], "Linea" : lista[1]})
+
+        return newList
