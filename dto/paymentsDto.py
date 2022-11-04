@@ -1,10 +1,10 @@
 from dao.paymentDao import PaymentDao
 
 class Payments:
-    def __init__(self, customerNumber):
+    def __init__(self, customerNumber, *customerName):
         self.customerNumber = customerNumber
-        
-        
+        self.customerName = customerName
+
 class PaymentDto:
     
     @classmethod
@@ -30,5 +30,5 @@ class PaymentDto:
         results = PaymentDao.findNumPaymentsByNumber(customerNumber)
         newList = []
         for i in results:
-            newList.append(i[0])
+            newList.append(Payments(i[0], i[1]))
         return newList
