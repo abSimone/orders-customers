@@ -13,7 +13,7 @@ async def showOrderStatus(orderNumber : int | None = None):
         return Services().findOrderStatusService(orderNumber)
     return Services().findAllOrderStatusService()
 
-@app.get("/articles/status")
+@app.get("/articles/status/{productCode}")
 async def showArticleStatus(productCode : str):
     return Services().findArticleStatusService(productCode)
 
@@ -22,16 +22,16 @@ async def showFullDetails():
     return Services().findAllOrderDetailsService()
 
 @app.get("/orders/articlesNumber")
-async def showAllOrdersArticlesNumber(orderNumber : int | None = None):
-    if orderNumber:
-        return Services().findArticlesNumberByOrderNumberService(orderNumber)
+async def showAllOrdersArticlesNumber():
     return Services().findAllOrdersArticlesNumberService()
 
-@app.get("/productlines/info")
-async def showOrderInfo(productLine : str | None = None):
-    if productLine:
-        return Services().getAllDescriptionService(productLine)
+@app.get("/productlines/all")
+async def showAllProductLines():
     return Services().getAllProductLinesService()
+
+@app.get("/productlines/description/{productLine}")
+async def showProductLinesDescription(productLine : str):
+    return Services().getAllDescriptionService(productLine)
 
 @app.get("/products/all")
 async def showAllProducts():
@@ -51,4 +51,22 @@ async def showBuyPrice(productCode : str):
 
 @app.get("/product/productLine")
 async def showProductLine(productCode : str):
-    return Services().findProductLine(productCode)
+    return Services().findProductLine(productCode)              
+
+
+
+
+@app.get("/products/{query_id}")
+async def read_query_id(query_id :str, productCode :str):
+    if query_id == "all":
+        return Services().findAllProducts(productCode)
+    elif query_id == "productName":
+            return Services().findProductName(productCode)    
+    elif query_id =="quantityInStock":
+        return Services().findQuantityInStock(productCode)    
+    elif query_id == "buyPrice":
+        return Services().findBuyPrice(productCode) 
+    elif query_id == "productLine":
+        return Services().findProductLine(productCode) 
+
+    
