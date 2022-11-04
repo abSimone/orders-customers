@@ -1,7 +1,7 @@
 from dao.paymentDao import PaymentDao
 
 class Payments:
-    def __init__(self, customerNumber, *customerName):
+    def __init__(self, customerNumber = None, customerName = None):
         self.customerNumber = customerNumber
         self.customerName = customerName
 
