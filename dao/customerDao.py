@@ -9,8 +9,6 @@ class CustomerDao:
         results = MySql.getResults()
         MySql.closeConnection()
         return results
-        # Questo è un test per la 
-        # notifica
     
     @classmethod    
     def findCustomersByNumber(cls, customerNumber):
