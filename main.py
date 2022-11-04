@@ -23,7 +23,7 @@ async def read_query_id_orders(query_id_orders : str, orderNumber : int | None =
         return Services().findAllOrdersTotalEarningsService()
 
 
-@app.get("/articles/status")
+@app.get("/articles/status/{productCode}")
 async def showArticleStatus(productCode : str):
     return Services().findArticleStatusService(productCode)
 
@@ -47,11 +47,11 @@ async def showProductLines(productLine : str | None = None):
 
 
 @app.get("/products/{query_id}")
-async def read_query_id(query_id :str, productCode :str | None = None):
+async def read_query_id(query_id :str, productCode :str):
     if query_id == "all":
-        return Services().findAllProducts()
+        return Services().findAllProducts(productCode)
     elif query_id == "productName":
-        return Services().findProductName(productCode)    
+            return Services().findProductName(productCode)    
     elif query_id =="quantityInStock":
         return Services().findQuantityInStock(productCode)    
     elif query_id == "buyPrice":

@@ -30,7 +30,6 @@ class OrderDto:
         newList = []
         for lista in data:    
             newList.append({"Numero Ordine": lista[0], "status": lista[1]})
-            
         return newList
 
 
