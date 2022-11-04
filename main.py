@@ -27,12 +27,10 @@ async def showAllOrdersArticlesNumber(orderNumber : int | None = None):
         return Services().findArticlesNumberByOrderNumberService(orderNumber)
     return Services().findAllOrdersArticlesNumberService()
 
-@app.get("/productlines/all")
-async def showAllProductLines():
-    return Services().getAllProductLinesService()
-
-@app.get("/productlines/description/{productLine}")
-async def showProductLinesDescription(productLine : str):
+@app.get("/productlines/info")
+async def showOrderInfo(productLine : str | None = None):
+    if productLine:
+        return Services().getAllProductLinesService()
     return Services().getAllDescriptionService(productLine)
 
 @app.get("/products/all")
