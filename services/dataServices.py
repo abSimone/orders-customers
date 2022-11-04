@@ -62,7 +62,7 @@ class Services:
         return productLinesDto().getAllProductLines()
 
     @classmethod 
-    def getAllDescriptionService(cls, productLine : str):
+    def getDescriptionService(cls, productLine : str):
         return productLinesDto().getDescription(productLine)
 
     @classmethod

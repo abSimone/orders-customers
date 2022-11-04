@@ -13,7 +13,7 @@ class OrderDetailsDto:
         for elementObject in newList:
             for lista in data:
                 if elementObject["Numero Ordine"] == lista[0]:
-                    elementObject["Articoli"].append({"Codice Prodotto" : lista[1], "Quantità ordinata" : lista[2], "Prezzo Unità" : lista[3]})
+                    elementObject["Articoli"].append({"Codice Prodotto" : lista[1], "Quantità ordinata" : lista[2], "Prezzo Unità" : float(lista[3])})
 
         return newList
 
@@ -63,7 +63,7 @@ class OrderDetailsDto:
         newList = []
         for lista in data:
             newList.append({"Codice Prodotto" : lista[0],
-                            "Guadagni Totali" : lista[1]})
+                            "Guadagni Totali" : float(lista[1])})
 
         return newList
 
@@ -73,7 +73,7 @@ class OrderDetailsDto:
         newList = []
         for lista in data:
             newList.append({"Codice Prodotto" : lista[0],
-                            "Guadagni Totali" : lista[1]})
+                            "Guadagni Totali" : float(lista[1])})
 
         return newList
 
@@ -83,7 +83,7 @@ class OrderDetailsDto:
         newList = []
         for lista in data:
             newList.append({"Numero Ordine" : lista[0],
-                            "Guadagni Totali" : lista[1]})
+                            "Guadagni Totali" : float(lista[1])})
 
         return newList
 
@@ -93,6 +93,6 @@ class OrderDetailsDto:
         newList = []
         for lista in data:
             newList.append({"Numero Ordine" : lista[0],
-                            "Guadagni Totali" : lista[1]})
+                            "Guadagni Totali" : float(lista[1])})
 
         return newList

@@ -9,9 +9,9 @@ class OrderDto:
         newList = []
         for lista in data:
             newList.append({"Numero Ordine": lista[0],
-                            "Data Ordine": lista[1],
-                            "Data Spedizione": lista[3],
-                            "Data Consegna": lista[2],
+                            "Data Ordine": str(lista[1]),
+                            "Data Spedizione": str(lista[3]),
+                            "Data Consegna": str(lista[2]),
                             "Stato": lista[4],
                             "Commenti": lista[5],
                             "Numero Cliente": lista[6]})

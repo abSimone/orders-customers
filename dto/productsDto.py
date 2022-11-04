@@ -14,8 +14,8 @@ class ProductDto:
                             "Produttore" : lista[4],
                             "Descrizione" : lista[5],
                             "Quantità Disponibile" : lista[6],
-                            "Prezzo" : lista[7],
-                            "MSRP" : lista[8]})
+                            "Prezzo" : float(lista[7]),
+                            "MSRP" : float(lista[8])})
         return newList           
 
     @classmethod
@@ -41,7 +41,7 @@ class ProductDto:
         data = Product.getBuyPrice(productCode)
         newList = []
         for lista in data:
-            newList.append({"Codice Prodotto" : lista[0], "Prezzo" : lista[1]})
+            newList.append({"Codice Prodotto" : lista[0], "Prezzo" : float(lista[1])})
 
         return newList
 
