@@ -1,18 +1,38 @@
-from dao.officesDao import officesDAO
+from dao.officesDao import officeDAO
 
 class Offices:
-    def init(self, title):
+    def __init__(self, title):
         self.title = title
+      
 
 
-class OfficesDTO:
+class OfficeDTO:
     @classmethod
     def getAllOffices(cls):
-        data = officesDAO.findAllOffices()
+        data = officeDAO.findAllOffices()
         newList = []
         for lista in data:
             newList.append(Offices(lista[0].capitalize()))
         return newList
 
+    @classmethod
+    def getAllOfficesByCode(cls,code_office:int):
+        data = officeDAO.findAllOfficesByCode(code_office)
+        newList = []
+        for lista in data:
+            newList.append(Offices(lista[0]))
+            return newList
+
+
+    @classmethod
+    def getAllEmployeeByCode(cls):
+        data = officeDAO.findAllEmployeeByCode()
+        newList = []
+        for lista in data:
+            newList.append(Offices(lista[0]))
+            return newList
+
+test = OfficeDTO()
+test.getAllEmployeeByCode()
 
 
