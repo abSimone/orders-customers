@@ -23,7 +23,7 @@ async def read_query_id_orders(query_id_orders : str, orderNumber : int | None =
         return Services().findAllOrdersTotalEarningsService()
 
 
-@app.get("/articles/status/{productCode}")
+@app.get("/articles/status")
 async def showArticleStatus(productCode : str):
     return Services().findArticleStatusService(productCode)
 
