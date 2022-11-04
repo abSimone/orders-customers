@@ -37,5 +37,4 @@ class officeDAO:
     )
     data = MySql.getResults()
     MySql.closeConnection()
-    print (data)
     return data

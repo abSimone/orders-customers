@@ -32,7 +32,6 @@ class OfficeDTO:
             newList.append(Offices(lista[0]))
             return newList
 
-test = OfficeDTO()
-test.getAllEmployeeByCode()
+
 
 
