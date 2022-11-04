@@ -12,5 +12,5 @@ async def showOrderStatus(orderNumber : int):
     return Services().findOrderStatusService(orderNumber)
 
 @app.get("/articles/status/{productCode}")
-async def showArticleStatus(productCode : int):
+async def showArticleStatus(productCode : str):
     return Services().findArticleStatusService(productCode)
