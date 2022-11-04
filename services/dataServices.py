@@ -60,3 +60,30 @@ class Services:
     @classmethod 
     def getAllDescriptionService(cls, productLine : str):
         return productLinesDto().getDescription(productLine)
+    
+class Products:
+
+    @classmethod
+    def findAllProducts(cls):
+        return Products().findAllProducts()
+
+    @classmethod
+    def findProductName(cls, productCode : str):
+        return Products().findProductName(productCode)
+
+    @classmethod
+    def findQuantityInStock(cls, productCode : str):
+        return Products().findQuantityInStock(productCode)  
+
+    @classmethod
+    def findBuyPrice(cls, productCode : str):
+        return Products().findBuyPrice(productCode)    
+
+    @classmethod
+    def findProductLine(cls, productCode : str):
+        return Products().findProductLine(productCode)
+
+
+
+
+        
