@@ -3,11 +3,11 @@ from services.dataServices import Services
 
 app = FastAPI()
 
-@app.get("orders/all")
+@app.get("/orders/all")
 async def showAllOrders():
     return Services().findAllOrdersService()
 
-@app.get("orders/fullDetails")
+@app.get("/orders/fullDetails")
 async def showFullDetails():
     return Services().findAllOrderDetailsService()
 
