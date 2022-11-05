@@ -1,8 +1,10 @@
 from dao.employeesDao import EmployeesDAO
 
 class Employees:
-    def __init__(self, employeeNumber):
+    def __init__(self, employeeNumber, email = None, city = None):
         self.employeeNumber = employeeNumber
+        self.email = email
+        self.city = city
 
 class EmployeesDTO:
     @classmethod
@@ -26,5 +28,5 @@ class EmployeesDTO:
         data = EmployeesDAO.findEmployeesByCity(id)
         newList = []
         for lista in data:
-            newList.append(Employees(lista[0]))
+            newList.append(Employees(lista[0], lista[1], lista[2]))
         return newList
