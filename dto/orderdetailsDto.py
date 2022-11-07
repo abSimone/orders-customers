@@ -1,5 +1,36 @@
 from dao.orderdetailsDao import OrderDetails
 
+class ArticleNumberObject:
+
+    def __init__(self, NumOrdine, NumArticoli):
+        self.NumOrdine = NumOrdine
+        self.NumArticoli = NumArticoli
+
+class ArticlesSoldObject:
+
+    def __init__(self, CodProd, Quantita):
+        self.CodProd = CodProd
+        self.Quantita = Quantita
+
+class ArticlesEarningsObject:
+
+    def __init__(self, CodProd, Guadagni):
+        self.CodProd = CodProd
+        self.Guadagni = Guadagni
+
+class OrdersEarningsObject:
+
+    def __init__(self, NumOrdine, Guadagni):
+        self.NumOrdine = NumOrdine
+        self.Guadagni = Guadagni
+
+class ArticlesDescriptionObject:
+
+    def __init__(self, CodProd, Quantita, Prezzo):
+        self.CodProd = CodProd
+        self.Quantita = Quantita
+        self.Prezzo = Prezzo
+
 class OrderDetailsDto:
 
     @classmethod
@@ -13,7 +44,7 @@ class OrderDetailsDto:
         for elementObject in newList:
             for lista in data:
                 if elementObject["Numero Ordine"] == lista[0]:
-                    elementObject["Articoli"].append({"Codice Prodotto" : lista[1], "Quantità ordinata" : lista[2], "Prezzo Unità" : float(lista[3])})
+                    elementObject["Articoli"].append(ArticlesDescriptionObject(lista[1], lista[2], lista[3]))
 
         return newList
 
@@ -22,8 +53,7 @@ class OrderDetailsDto:
         data = OrderDetails.getAllOrdersDetails()
         newList = []
         for lista in data:
-            newList.append({"Numero Ordine" : lista[0],
-                            "Numero Articoli" : lista[1]})
+            newList.append(ArticleNumberObject(lista[0], lista[1]))
         
         return newList
 
@@ -32,9 +62,7 @@ class OrderDetailsDto:
         data = OrderDetails.getNumberOfArticlesByOrderNumber(orderNumber)
         newList = []
         for lista in data:
-            newList.append({"Numero Ordine" : lista[0],
-                            "Numero Articoli" : lista[1]})
-
+            newList.append(ArticleNumberObject(lista[0], lista[1]))
         return newList
 
     @classmethod
@@ -42,8 +70,7 @@ class OrderDetailsDto:
         data = OrderDetails.getAllArticlesQuantityOrdered()
         newList = []
         for lista in data:
-            newList.append({"Codice Prodotto" : lista[0],
-                            "Quantità Venduta" : lista[1]})
+            newList.append(ArticlesSoldObject(lista[0], lista[1]))
 
         return newList
 
@@ -52,8 +79,7 @@ class OrderDetailsDto:
         data = OrderDetails.getQuantityOrderedByArticle(productCode)
         newList = []
         for lista in data:
-            newList.append({"Codice Prodotto" : lista[0],
-                            "Quantità Venduta" : lista[1]})
+            newList.append(ArticlesSoldObject(lista[0], lista[1]))
 
         return newList
     
@@ -62,8 +88,7 @@ class OrderDetailsDto:
         data = OrderDetails.getAllArticlesTotalEarnings()
         newList = []
         for lista in data:
-            newList.append({"Codice Prodotto" : lista[0],
-                            "Guadagni Totali" : float(lista[1])})
+            newList.append(ArticlesEarningsObject(lista[0], lista[1]))
 
         return newList
 
@@ -72,8 +97,7 @@ class OrderDetailsDto:
         data = OrderDetails.getTotalEarningsByArticle(productCode)
         newList = []
         for lista in data:
-            newList.append({"Codice Prodotto" : lista[0],
-                            "Guadagni Totali" : float(lista[1])})
+            newList.append(ArticlesEarningsObject(lista[0], lista[1]))
 
         return newList
 
@@ -82,8 +106,7 @@ class OrderDetailsDto:
         data = OrderDetails.getAllOrdersTotalEarnings()
         newList = []
         for lista in data:
-            newList.append({"Numero Ordine" : lista[0],
-                            "Guadagni Totali" : float(lista[1])})
+            newList.append(OrdersEarningsObject(lista[0], lista[1]))
 
         return newList
 
@@ -92,7 +115,6 @@ class OrderDetailsDto:
         data = OrderDetails.getTotalEarningsByOrder(orderNumber)
         newList = []
         for lista in data:
-            newList.append({"Numero Ordine" : lista[0],
-                            "Guadagni Totali" : float(lista[1])})
+            newList.append(OrdersEarningsObject(lista[0], lista[1]))
 
         return newList

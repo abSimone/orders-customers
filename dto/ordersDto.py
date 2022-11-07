@@ -1,5 +1,28 @@
 from dao.ordersDao import Order
 
+class OrderObject:
+
+    def __init__(self, NumOrdine, DataOrdine, DataSpedizione, DataConsegna, Stato, Commenti, NumCliente):
+        self.NumOrdine = NumOrdine
+        self.DataOrdine = DataOrdine
+        self.DataSpedizione = DataSpedizione
+        self.DataConsegna = DataConsegna
+        self.Stato = Stato
+        self.Commenti = Commenti
+        self.NumCliente = NumCliente
+
+class OrderStatusObject:
+
+    def __init__(self, NumOrdine, Status):
+        self.NumOrdine = NumOrdine
+        self.Status = Status
+
+class ArticleStatusObject:
+
+    def __init__(self, NumOrdine, Status, CodProd):
+        self.NumOrdine = NumOrdine
+        self.Status = Status
+        self.CodProd = CodProd
 
 class OrderDto:
 
@@ -8,28 +31,22 @@ class OrderDto:
         data = Order.getAllOrders()
         newList = []
         for lista in data:
-            newList.append({"Numero Ordine": lista[0],
-                            "Data Ordine": str(lista[1]),
-                            "Data Spedizione": str(lista[3]),
-                            "Data Consegna": str(lista[2]),
-                            "Stato": lista[4],
-                            "Commenti": lista[5],
-                            "Numero Cliente": lista[6]})
+            newList.append(OrderObject(lista[0], lista[1], lista[3], lista[2], lista[4], lista[5], lista[6]))
 
         return newList
 
     @classmethod
     def findOrderStatus(cls, orderNumber : int):
         data = Order.getOrderStatusByOrderNumber(orderNumber)
-        for lista in data:    
-            return {"Numero Ordine": lista[0], "status": lista[1]}
+        for lista in data:
+            return OrderStatusObject(lista[0], lista[1])
 
     @classmethod
     def findAllOrderStatus(cls):
         data = Order.getAllOrderStatus()
         newList = []
-        for lista in data:    
-            newList.append({"Numero Ordine": lista[0], "status": lista[1]})
+        for lista in data:
+            newList.append(OrderStatusObject(lista[0], lista[1]))
         return newList
 
 
@@ -37,7 +54,7 @@ class OrderDto:
     def findArticleStatus(cls, productCode : str):
         data = Order.getArticlesStatus(productCode)
         newList = []
-        for lista in data:    
-            newList.append({"Numero Ordine": lista[0], "Stato": lista[1], "Codice Prodotto": lista[2]})
+        for lista in data:
+            newList.append(ArticleStatusObject(lista[0], lista[1], lista[2]))    
             
         return newList

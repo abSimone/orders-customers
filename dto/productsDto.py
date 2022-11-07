@@ -1,5 +1,42 @@
 from dao.productsDao import Product
 
+class ProductObject:
+
+    def __init__(self, CodProdotto, Nome, Linea, Scala, Produttore, Descrizione, QuantitaDisp, Prezzo, MSRP):
+        self.CodProdotto = CodProdotto
+        self.Nome = Nome
+        self.Linea = Linea
+        self.Scala = Scala
+        self.Produttore = Produttore
+        self.Descrizione = Descrizione
+        self.QuantitaDisp = QuantitaDisp
+        self.Prezzo = Prezzo
+        self.MSRP = MSRP
+
+class ProductNameObject:
+
+    def __init__(self, CodProdotto, Nome):
+        self.CodProdotto = CodProdotto
+        self.Nome = Nome
+
+class ProductQuantbject:
+
+    def __init__(self, CodProdotto, QuantitaDisp):
+        self.CodProdotto = CodProdotto
+        self.QuantitaDisp = QuantitaDisp
+
+class ProductPriceObject:
+
+    def __init__(self, CodProdotto, Prezzo):
+        self.CodProdotto = CodProdotto
+        self.Prezzo = Prezzo
+
+class ProductLineObject:
+
+    def __init__(self, CodProdotto, ProdLine):
+        self.CodProdotto = CodProdotto
+        self.Prezzo = ProdLine
+
 class ProductDto: 
 
     @classmethod
@@ -7,15 +44,7 @@ class ProductDto:
         data = Product.getAllProducts()
         newList = []
         for lista in data:
-            newList.append({"Codice Prodotto" : lista[0],
-                            "Nome Prodotto" : lista[1],
-                            "Linea" : lista[2],
-                            "Scala" : lista[3],
-                            "Produttore" : lista[4],
-                            "Descrizione" : lista[5],
-                            "Quantità Disponibile" : lista[6],
-                            "Prezzo" : float(lista[7]),
-                            "MSRP" : float(lista[8])})
+            newList.append(ProductObject(lista[0], lista[1], lista[2], lista[3], lista[4], lista[5], lista[6], lista[7], lista[8]))
         return newList           
 
     @classmethod
@@ -23,7 +52,7 @@ class ProductDto:
         data = Product.getProductName(productCode)
         newList = []
         for lista in data:
-            newList.append({"Codice Prodotto" : lista[0], "Nome Prodotto" : lista[1]})
+            newList.append(ProductNameObject(lista[0], lista[1]))
 
         return newList
 
@@ -32,7 +61,7 @@ class ProductDto:
         data = Product.getQuantityInStock(productCode)
         newList = []
         for lista in data:
-            newList.append({"Codice Prodotto" : lista[0], "Quantità Disponibile" : lista[1]})
+            newList.append(ProductQuantbject(lista[0], lista[1]))
 
         return newList
 
@@ -41,7 +70,7 @@ class ProductDto:
         data = Product.getBuyPrice(productCode)
         newList = []
         for lista in data:
-            newList.append({"Codice Prodotto" : lista[0], "Prezzo" : float(lista[1])})
+            newList.append(ProductPriceObject(lista[0], lista[1]))
 
         return newList
 
@@ -50,6 +79,6 @@ class ProductDto:
         data = Product.getProductLine(productCode)
         newList = []
         for lista in data:
-            newList.append({"Codice Prodotto" : lista[0], "Linea" : lista[1]})
+            newList.append(ProductLineObject(lista[0], lista[1]))
 
         return newList
