@@ -28,7 +28,7 @@ class OfficeDTO:
         data = officeDAO.findAllOfficesByCode(code_office)
         newList = []
         for lista in data:
-            newList.append(Offices(lista[0]))
+            newList.append(codeOffices(lista[0]))
         return newList
 
 
@@ -39,9 +39,6 @@ class OfficeDTO:
         for lista in data:
             newList.append(EmployeeNyc(lista[0],lista[1],lista[2]))
         return newList
-
-test = officeDAO()
-test.findAllEmployeeOfficeNyc()
 
 
 
