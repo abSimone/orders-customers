@@ -27,14 +27,15 @@ class officeDAO:
     return data
 
   @classmethod
-  def findAllEmployeeByCode(cls):
+  def findAllEmployeeOfficeNyc(cls):
     MySql.openConnection()
     MySql.query(
-        f"SELECT firstName, lastName, officeCode \
-        FROM employees\
-        WHERE officeCode IN (1 , 2, 3)\
-        ORDER BY officeCode"
+        f"SELECT firstName, lastName, city \
+        FROM offices o, employees e\
+        WHERE o.officeCode = e.officeCode \
+        AND city like 'NYC'"
     )
     data = MySql.getResults()
     MySql.closeConnection()
+    print(data)
     return data
