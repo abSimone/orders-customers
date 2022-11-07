@@ -3,7 +3,7 @@ from dao.customerDao import CustomerDao
 class Customer:
     def __init__(self, customerName):
         self.customerName = customerName
-        
+
 class CustomerDto:
     
     @classmethod
